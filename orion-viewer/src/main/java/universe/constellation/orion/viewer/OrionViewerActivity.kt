@@ -564,6 +564,9 @@ class OrionViewerActivity : OrionBaseActivity(viewerType = Device.VIEWER_ACTIVIT
         if (controller != null) {
             analytics.action("onResumeOpenedBook")
             controller!!.processPendingEvents()
+            lastPageInfo?.let {
+                controller!!.changeColorMode(it.colorMode, true)
+            }
         }
         statusBarHelper.onResume(this)
     }
